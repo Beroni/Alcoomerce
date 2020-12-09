@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
-import SessionController from '../controllers/SessionController';
+import CategoriesController from '../controllers/CategoriesController';
 
 const routes = new Router();
 
@@ -9,12 +9,10 @@ routes.post(
   '/',
   celebrate({
     [Segments.BODY]: {
-      name: Joi.string()
-        .email()
-        .required(),
+      name: Joi.string().required(),
     },
   }),
-  SessionController.store
+  CategoriesController.store
 );
 
 export default routes;

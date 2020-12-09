@@ -20,12 +20,16 @@ module.exports = {
         allowNull: false,
         default: 0,
       },
-      picture_id: {
-        type: Sequelize.INTEGER,
-        references: { model: 'files', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+      price: {
+        type: Sequelize.FLOAT,
+        allowNull: false,
+        default: 0.0,
+      },
+      url: {
+        type: Sequelize.STRING,
         allowNull: true,
+        default:
+          'https://www.montealtoagora.com.br/upload/noticia_20190118092443proibicao-bebida-posto.jpg',
       },
       category_id: {
         type: Sequelize.INTEGER,

@@ -3,7 +3,6 @@ import Category from '../models/Category';
 class CategoryController {
   async list(req, res) {
     const categories = await Category.findAll({});
-
     return res.status(200).json(categories);
   }
 

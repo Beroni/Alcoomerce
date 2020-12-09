@@ -1,5 +1,3 @@
-import '../bootstrap';
-
 module.exports = {
   dialect: 'postgres',
   host: 'localhost',

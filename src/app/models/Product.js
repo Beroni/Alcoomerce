@@ -7,6 +7,8 @@ class Product extends Model {
         name: Sequelize.STRING,
         description: Sequelize.STRING,
         quantity: Sequelize.INTEGER,
+        price: Sequelize.FLOAT,
+        url: Sequelize.STRING,
       },
       { sequelize }
     );
@@ -15,7 +17,6 @@ class Product extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'picture_id', as: 'picture' });
     this.belongsTo(models.Category, {
       foreignKey: 'category_id',
       as: 'category',
