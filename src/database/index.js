@@ -5,10 +5,11 @@ import UserToken from '../app/models/UserToken';
 import Admin from '../app/models/Admin';
 import Category from '../app/models/Category';
 import Product from '../app/models/Product';
+import Order from '../app/models/Order';
 
 import databaseConfig from '../config/database';
 
-const models = [User, UserToken, Admin, Category, Product];
+const models = [User, UserToken, Admin, Category, Product, Order];
 
 class Database {
   constructor() {

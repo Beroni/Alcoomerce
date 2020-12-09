@@ -1,21 +1,22 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('orders', {
+    return queryInterface.createTable('order_products', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      amount: {
-        type: Sequelize.FLOAT,
+      order_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'orders', key: 'id' },
+        onDelete: 'CASCADE',
         allowNull: false,
       },
-      buyer_id: {
+      product_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'users', key: 'id' },
-        onUpdate: 'CASCADE',
-        onDelete: 'SET NULL',
+        references: { model: 'products', key: 'id' },
+        onDelete: 'CASCADE',
         allowNull: false,
       },
       created_at: {
@@ -30,6 +31,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('orders');
+    return queryInterface.dropTable('order_products');
   },
 };

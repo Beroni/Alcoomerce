@@ -6,7 +6,7 @@ class NewOrderMail {
   }
 
   async handle({ data }) {
-    const { user } = data;
+    const { user, order } = data;
 
     await Mail.sendMail({
       from: `Equipe Alcoolmerce <noreply@alcoolmerce.com>`,
@@ -14,7 +14,10 @@ class NewOrderMail {
       subject: '[Alcoomerce] Bora encher a cara !',
       template: 'neworder',
       context: {
-        deliverer: user.name,
+        name: user.name,
+        amount: order.amount,
+        invoice_number: order.id,
+        invoice_date: order.created_at,
         address: `${user.street}, N° ${user.number}, ${user.city} ${user.complement}`,
       },
     });

@@ -2,7 +2,7 @@ import Mail from '../lib/Mail';
 
 class NewOrderMail {
   get key() {
-    return 'neworder';
+    return 'recoverypassword';
   }
 
   async handle({ data }) {

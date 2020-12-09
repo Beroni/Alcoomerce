@@ -5,6 +5,7 @@ import sessionRoutes from './app/routes/session.router';
 import adminRoutes from './app/routes/admin.router';
 import categoryRoutes from './app/routes/categories.router';
 import productRoutes from './app/routes/product.router';
+import orderRoute from './app/routes/order.router';
 
 const routes = new Router();
 
@@ -13,5 +14,6 @@ routes.use('/admins', adminRoutes);
 routes.use('/users', userRoutes);
 routes.use('/products', productRoutes);
 routes.use('/categories', categoryRoutes);
+routes.use('/orders', orderRoute);
 
 export default routes;
