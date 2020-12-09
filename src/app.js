@@ -3,7 +3,6 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import routes from './routes';
 
-import './bootstrap';
 import './database';
 
 class App {

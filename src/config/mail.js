@@ -1,14 +1,11 @@
-import '../bootstrap';
-
 export default {
-  host: process.env.MAILER_HOST,
-  port: process.env.MAILER_PORT,
-  secure: false,
+  host: 'smtp.mailtrap.io',
+  port: 2525,
   auth: {
-    user: process.env.MAILER_USER,
-    pass: process.env.MAILER_PASS,
+    user: 'a60abe8e558fe8',
+    pass: '292362c5d3f71b',
   },
   default: {
-    from: process.env.MAILER_USER,
+    from: 'equipe@alcoolmerce.com',
   },
 };

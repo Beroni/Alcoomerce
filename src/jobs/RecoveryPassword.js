@@ -9,13 +9,13 @@ class NewOrderMail {
     const { user, token } = data;
 
     await Mail.sendMail({
-      from: `Equipe Alcoolmerce <noreply@alcoomercet.com>`,
+      from: `Equipe Alcoolmerce <noreply@alcoolmerce.com>`,
       to: `${user.name} <${user.email}>`,
       subject: '[Alcoomerce] Recupera tua senha aí mah !',
-      template: 'forgotpassword',
+      template: 'recoverypassword',
       context: {
         name: user.name,
-        link: `${process.env.APP_WEB_URL}/reset_password?token=${token}`,
+        link: `localhost:3000/reset_password/${token}`,
       },
     });
   }

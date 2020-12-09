@@ -73,7 +73,7 @@ routes.post(
 );
 
 routes.post(
-  '/reset',
+  '/recover',
   celebrate({
     [Segments.BODY]: {
       token: Joi.string()

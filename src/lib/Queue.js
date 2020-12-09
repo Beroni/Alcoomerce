@@ -1,9 +1,9 @@
 import Bee from 'bee-queue';
-import NewOrder from '../jobs/NewOrder';
+// import NewOrder from '../jobs/NewOrder';
 import RecoveryPassword from '../jobs/RecoveryPassword';
 import redisConfig from '../config/redis';
 
-const jobs = [NewOrder, RecoveryPassword];
+const jobs = [RecoveryPassword];
 
 class Queue {
   constructor() {

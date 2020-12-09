@@ -3,6 +3,9 @@ import bcrypt from 'bcryptjs';
 import User from '../models/User';
 import UserToken from '../models/UserToken';
 
+import Queue from '../../lib/Queue';
+import RecoveryPassword from '../../jobs/RecoveryPassword';
+
 class ForgotPasswordController {
   async forgot(req, res) {
     const user = await User.findOne({ where: { email: req.body.email } });
@@ -18,20 +21,25 @@ class ForgotPasswordController {
       user_id: user.id,
     });
 
-    // Send Forgot Password Email
+    await Queue.add(RecoveryPassword.key, {
+      token: tokenUuid,
+      user,
+    });
 
     return res.status(200).json(token);
   }
 
   async recover(req, res) {
-    const { token } = req.body;
+    const { token, password } = req.body;
 
-    const userToken = UserToken.findOne({ where: { token } });
+    const userToken = await UserToken.findOne({ where: { token } });
 
-    const user = User.findByPk(userToken.user_id);
+    const user = await User.findByPk(userToken.user_id);
+
+    const newPassword = await bcrypt.hash(password, 8);
 
     const newUser = await user.update({
-      password_hash: bcrypt.hash(req.password, 8),
+      password_hash: newPassword,
     });
 
     return res.json(newUser);

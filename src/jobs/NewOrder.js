@@ -9,7 +9,7 @@ class NewOrderMail {
     const { user } = data;
 
     await Mail.sendMail({
-      from: `Equipe Alcoolmerce <noreply@alcoomercet.com>`,
+      from: `Equipe Alcoolmerce <noreply@alcoolmerce.com>`,
       to: `${user.name} <${user.email}>`,
       subject: '[Alcoomerce] Bora encher a cara !',
       template: 'neworder',
