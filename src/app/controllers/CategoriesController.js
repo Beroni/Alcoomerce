@@ -20,6 +20,15 @@ class CategoryController {
     return res.status(200).json(category);
   }
 
+  async update(req, res) {
+    const { id } = req.params;
+    const category = await Category.findByPk(id);
+
+    const newCategory = await category.update(req.body);
+
+    return res.json(newCategory);
+  }
+
   async remove(req, res) {
     const { id } = req.params;
 
@@ -31,7 +40,7 @@ class CategoryController {
 
     await category.destroy();
 
-    return res.status(204);
+    return res.status(204).json();
   }
 }
 

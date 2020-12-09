@@ -14,11 +14,25 @@ class ProductController {
   }
 
   async update(req, res) {
-    const product = await Product.findByPk(req.userId);
+    const { id } = req.params;
+    const product = await Product.findByPk(id);
 
     const newProduct = await product.update(req.body);
 
     return res.json(newProduct);
+  }
+
+  async remove(req, res) {
+    const { id } = req.params;
+
+    const product = await Product.findByPk(id);
+    if (!product) {
+      return res.status(401).json({ error: 'Product does not exist' });
+    }
+
+    await product.destroy();
+
+    return res.status(204).json();
   }
 }
 

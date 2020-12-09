@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
+import authJWT from '../../middlewares/auth';
 
 import UserController from '../controllers/UserController';
 
@@ -56,6 +57,7 @@ routes.put(
       state: Joi.string(),
     },
   }),
+  authJWT,
   UserController.update
 );
 
