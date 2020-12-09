@@ -15,6 +15,10 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
+      info: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       quantity: {
         type: Sequelize.INTEGER,
         allowNull: false,

@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('users', {
+    return queryInterface.createTable('users_token', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
       },
       token: {
-        type: Sequelize.STRING,
+        type: Sequelize.UUID,
         allowNull: false,
       },
       user_id: {
@@ -30,6 +30,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('users');
+    return queryInterface.dropTable('users_token');
   },
 };

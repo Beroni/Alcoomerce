@@ -4,7 +4,29 @@ class ProductController {
   async list(req, res) {
     const products = await Product.findAll({});
 
-    return res.status(200).json(products);
+    return res.status(200).json({
+      data: products,
+    });
+  }
+
+  async index(req, res) {
+    const { id } = req.params;
+    const product = await Product.findOne({
+      where: {
+        id,
+      },
+    });
+    return res.status(200).json({ data: product });
+  }
+
+  async filter(req, res) {
+    const { id } = req.params;
+    const products = await Product.findAll({
+      where: {
+        category_id: id,
+      },
+    });
+    return res.status(200).json({ data: products });
   }
 
   async store(req, res) {

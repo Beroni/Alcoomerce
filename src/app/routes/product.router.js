@@ -6,6 +6,8 @@ import ProductController from '../controllers/ProductController';
 const routes = new Router();
 
 routes.get('/', ProductController.list);
+routes.get('/:id', ProductController.index);
+routes.get('/:id/category/', ProductController.filter);
 
 routes.post(
   '/',
@@ -14,6 +16,7 @@ routes.post(
       name: Joi.string().required(),
       category_id: Joi.number().required(),
       quantity: Joi.number().required(),
+      info: Joi.string().required(),
       price: Joi.number().required(),
       url: Joi.string().required(),
       description: Joi.string().required(),

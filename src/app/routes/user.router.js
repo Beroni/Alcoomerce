@@ -3,6 +3,7 @@ import { celebrate, Joi, Segments } from 'celebrate';
 import authJWT from '../../middlewares/auth';
 
 import UserController from '../controllers/UserController';
+import ForgotPasswordController from '../controllers/ForgotPasswordController';
 
 const routes = new Router();
 
@@ -59,6 +60,32 @@ routes.put(
   }),
   authJWT,
   UserController.update
+);
+
+routes.post(
+  '/forgot',
+  celebrate({
+    [Segments.BODY]: {
+      email: Joi.string().required(),
+    },
+  }),
+  ForgotPasswordController.forgot
+);
+
+routes.post(
+  '/reset',
+  celebrate({
+    [Segments.BODY]: {
+      token: Joi.string()
+        .uuid()
+        .required(),
+      password: Joi.string().required(),
+      passsword_confirmation: Joi.string()
+        .required()
+        .valid(Joi.ref('password')),
+    },
+  }),
+  ForgotPasswordController.recover
 );
 
 export default routes;
