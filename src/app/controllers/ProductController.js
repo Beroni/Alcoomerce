@@ -2,7 +2,19 @@ import Product from '../models/Product';
 
 class ProductController {
   async list(req, res) {
-    const products = await Product.findAll({});
+    let filter = {};
+    try {
+      filter = req.query.filter;
+      filter = JSON.parse(filter);
+    } catch (err) {
+      filter = {};
+    }
+
+    const products = await Product.findAll({
+      where: {
+        ...filter,
+      },
+    });
 
     return res.status(200).json({
       data: products,

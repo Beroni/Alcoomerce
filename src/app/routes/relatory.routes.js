@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import authJWT from '../../middlewares/auth';
-import adminJwt from '../../middlewares/auth';
+import adminJwt from '../../middlewares/admin';
 
 import RelatoryController from '../controllers/RelatoryController';
 

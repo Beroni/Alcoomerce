@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
-import adminJwt from '../../middlewares/auth';
+import adminJwt from '../../middlewares/admin';
 import ProductController from '../controllers/ProductController';
 
 const routes = new Router();
