@@ -6,12 +6,13 @@ import User from '../models/User';
 class OrderController {
   async store(req, res) {
     const { products, amount } = req.body;
-    console.log(req.userId);
-    const order = await Order.create({ buyer_id: req.userId, amount });
+
+    const userId = req.userId ? req.userId : 1;
+    const order = await Order.create({ buyer_id: userId, amount });
 
     order.setProduct(products);
 
-    const user = await User.findByPk(req.userId);
+    const user = await User.findByPk(userId);
 
     await Queue.add(NewOrder.key, {
       user,
