@@ -45,7 +45,7 @@ class ProductController {
   async store(req, res) {
     const product = await Product.create(req.body);
 
-    return res.status(200).json({ data: product });
+    return res.status(201).json({ data: product });
   }
 
   async update(req, res) {
@@ -67,7 +67,7 @@ class ProductController {
 
     await product.destroy();
 
-    return res.status(204).json();
+    return res.status(200).json({ data: { id } });
   }
 }
 

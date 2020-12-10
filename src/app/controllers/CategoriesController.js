@@ -28,7 +28,7 @@ class CategoryController {
 
     const category = await Category.create(req.body);
 
-    return res.status(200).json({ data: category });
+    return res.status(201).json({ data: category });
   }
 
   async update(req, res) {
@@ -51,7 +51,7 @@ class CategoryController {
 
     await category.destroy();
 
-    return res.status(204).json();
+    return res.status(204).json({ data: { id } });
   }
 }
 
