@@ -8,6 +8,8 @@ const routes = new Router();
 
 routes.get('/', CategoriesController.list);
 
+routes.get('/:id', CategoriesController.index);
+
 routes.post(
   '/',
   celebrate({

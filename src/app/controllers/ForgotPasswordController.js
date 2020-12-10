@@ -26,7 +26,7 @@ class ForgotPasswordController {
       user,
     });
 
-    return res.status(200).json(token);
+    return res.status(200).json({ data: token });
   }
 
   async recover(req, res) {
@@ -42,7 +42,7 @@ class ForgotPasswordController {
       password_hash: newPassword,
     });
 
-    return res.json(newUser);
+    return res.json({ data: newUser });
   }
 }
 

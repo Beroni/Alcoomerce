@@ -4,7 +4,7 @@ class UserController {
   async list(req, res) {
     const users = await User.findAll({});
 
-    return res.status(200).json(users);
+    return res.status(200).json({ data: users });
   }
 
   async store(req, res) {
@@ -16,7 +16,7 @@ class UserController {
 
     const { id, name, email } = await User.create(req.body);
 
-    return res.status(200).json({ id, name, email });
+    return res.status(200).json({ data: { id, name, email } });
   }
 
   async update(req, res) {
@@ -39,9 +39,11 @@ class UserController {
     const { id, name } = await user.update(req.body);
 
     return res.json({
-      id,
-      name,
-      email,
+      data: {
+        id,
+        name,
+        email,
+      },
     });
   }
 }

@@ -12,7 +12,7 @@ class AdminController {
 
     const { id, name, email } = await Admin.create(req.body);
 
-    return res.status(200).json({ id, name, email });
+    return res.status(200).json({ data: { id, name, email } });
   }
 }
 

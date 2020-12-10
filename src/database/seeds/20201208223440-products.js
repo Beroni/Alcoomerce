@@ -22,7 +22,7 @@ module.exports = {
           quantity: 10,
           price: 0.89,
           url:
-            'https://static.wixstatic.com/media/79163a_45ab884b070542aea45a522f45e0e1cd~mv2.jpeg/v1/fill/w_630,h_418,al_c,q_80,usm_0.66_1.00_0.01/79163a_45ab884b070542aea45a522f45e0e1cd~mv2.webp',
+            'https://http2.mlstatic.com/D_NQ_NP_845690-MLB40454577540_012020-O.webp',
           description:
             'Produzido nos confins do inferno, feito para matar estudantes em confraternizações.',
           info: 'Teor Alcoólico: 100%',

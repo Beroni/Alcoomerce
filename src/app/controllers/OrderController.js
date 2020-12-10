@@ -18,7 +18,7 @@ class OrderController {
       order,
     });
 
-    return res.status(200).json(order);
+    return res.status(200).json({ data: order });
   }
 }
 

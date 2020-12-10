@@ -3,7 +3,17 @@ import Category from '../models/Category';
 class CategoryController {
   async list(req, res) {
     const categories = await Category.findAll({});
-    return res.status(200).json(categories);
+    return res.status(200).json({ data: categories });
+  }
+
+  async index(req, res) {
+    const { id } = req.params;
+    const category = await Category.findOne({
+      where: {
+        id,
+      },
+    });
+    return res.status(200).json({ data: category });
   }
 
   async store(req, res) {
@@ -17,7 +27,7 @@ class CategoryController {
 
     const category = await Category.create(req.body);
 
-    return res.status(200).json(category);
+    return res.status(200).json({ data: category });
   }
 
   async update(req, res) {
@@ -26,7 +36,7 @@ class CategoryController {
 
     const newCategory = await category.update(req.body);
 
-    return res.json(newCategory);
+    return res.json({ data: newCategory });
   }
 
   async remove(req, res) {

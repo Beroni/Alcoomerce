@@ -41,7 +41,7 @@ class ProductController {
 
     const newProduct = await product.update(req.body);
 
-    return res.json(newProduct);
+    return res.json({ data: newProduct });
   }
 
   async remove(req, res) {
