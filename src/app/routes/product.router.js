@@ -33,6 +33,7 @@ routes.put(
       name: Joi.string().required(),
       category_id: Joi.number().required(),
       quantity: Joi.number().required(),
+      info: Joi.string().required(),
       price: Joi.number().required(),
       url: Joi.string().required(),
       description: Joi.string().required(),
