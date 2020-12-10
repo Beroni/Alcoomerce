@@ -1,3 +1,4 @@
+import { string } from 'joi';
 import Mail from '../lib/Mail';
 
 class NewOrderMail {
@@ -17,7 +18,7 @@ class NewOrderMail {
         name: user.name,
         amount: order.amount,
         invoice_number: order.id,
-        invoice_date: order.created_at,
+        invoice_date: order.createdAt,
         address: `${user.street}, N° ${user.number}, ${user.city} ${user.complement}`,
       },
     });
