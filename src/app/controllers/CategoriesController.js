@@ -2,8 +2,8 @@ import Category from '../models/Category';
 
 class CategoryController {
   async list(req, res) {
-    const categories = await Category.findAll({});
-    return res.status(200).json({ data: categories });
+    const { rows, count } = await Category.findAndCountAll({});
+    return res.status(200).json({ data: rows, total: count });
   }
 
   async index(req, res) {
@@ -13,7 +13,8 @@ class CategoryController {
         id,
       },
     });
-    return res.status(200).json({ data: category });
+
+    return res.status(200).json({ data: category, total: 1 });
   }
 
   async store(req, res) {

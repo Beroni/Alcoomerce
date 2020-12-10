@@ -2,9 +2,9 @@ import User from '../models/User';
 
 class UserController {
   async list(req, res) {
-    const users = await User.findAll({});
+    const { rows, count } = await User.findAndCountAll({});
 
-    return res.status(200).json({ data: users });
+    return res.status(200).json({ data: rows, total: count });
   }
 
   async store(req, res) {

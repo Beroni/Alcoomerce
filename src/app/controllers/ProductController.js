@@ -10,14 +10,15 @@ class ProductController {
       filter = {};
     }
 
-    const products = await Product.findAll({
+    const { rows, count } = await Product.findAndCountAll({
       where: {
         ...filter,
       },
     });
 
     return res.status(200).json({
-      data: products,
+      data: rows,
+      total: count,
     });
   }
 
@@ -28,17 +29,17 @@ class ProductController {
         id,
       },
     });
-    return res.status(200).json({ data: product });
+    return res.status(200).json({ data: product, total: 1 });
   }
 
   async filter(req, res) {
     const { id } = req.params;
-    const products = await Product.findAll({
+    const { rows, count } = await Product.findAndCountAll({
       where: {
         category_id: id,
       },
     });
-    return res.status(200).json({ data: products });
+    return res.status(200).json({ data: rows, total: count });
   }
 
   async store(req, res) {
