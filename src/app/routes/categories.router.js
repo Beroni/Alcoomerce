@@ -16,6 +16,7 @@ routes.post(
     [Segments.BODY]: {
       name: Joi.string().required(),
       description: Joi.string().required(),
+      url: Joi.string().required(),
     },
   }),
   adminJwt,
@@ -28,6 +29,7 @@ routes.put(
     [Segments.BODY]: {
       name: Joi.string().required(),
       description: Joi.string().required(),
+      url: Joi.string().required(),
     },
   }),
   adminJwt,
