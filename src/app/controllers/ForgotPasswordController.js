@@ -1,4 +1,3 @@
-import { uuid } from 'uuidv4';
 import bcrypt from 'bcryptjs';
 import User from '../models/User';
 import UserToken from '../models/UserToken';
@@ -8,25 +7,26 @@ import RecoveryPassword from '../../jobs/RecoveryPassword';
 
 class ForgotPasswordController {
   async forgot(req, res) {
-    const user = await User.findOne({ where: { email: req.body.email } });
+    let user = await User.findOne({ where: { email: req.body.email } });
 
     if (!user) {
       return res.status(400).json({ error: 'user does not exists.' });
     }
 
-    const tokenUuid = uuid();
+    const newPassword = Math.floor(100000 + Math.random() * 900000).toString();
 
-    const token = await UserToken.create({
-      token: tokenUuid,
-      user_id: user.id,
+    const hashPassword = await bcrypt.hash(newPassword, 8);
+
+    user = await user.update({
+      password_hash: hashPassword,
     });
 
     await Queue.add(RecoveryPassword.key, {
-      token: tokenUuid,
+      token: newPassword,
       user,
     });
 
-    return res.status(200).json({ data: token });
+    return res.status(204).json();
   }
 
   async recover(req, res) {

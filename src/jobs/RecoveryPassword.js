@@ -15,7 +15,7 @@ class NewOrderMail {
       template: 'recoverypassword',
       context: {
         name: user.name,
-        link: `localhost:3000/reset_password/${token}`,
+        token,
       },
     });
   }
