@@ -15,6 +15,7 @@ routes.post(
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
+      description: Joi.string().required(),
     },
   }),
   adminJwt,
@@ -26,6 +27,7 @@ routes.put(
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
+      description: Joi.string().required(),
     },
   }),
   adminJwt,
