@@ -18,4 +18,4 @@ Hey, bem vindo ao backend do frontend que vende cachaça.
 
 <hr>
 
-Rotas do [Postman](https://www.getpostman.com/collections/cefc62e8e6d4d7ae40a1) para você testar o backend 😄
+Rotas do [Postman](https://www.getpostman.com/collections/80ed9bab4c17e8c3fe1a) para você testar o backend 😄
