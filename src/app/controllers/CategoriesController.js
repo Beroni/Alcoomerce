@@ -51,7 +51,7 @@ class CategoryController {
 
     await category.destroy();
 
-    return res.status(204).json({ data: { id } });
+    return res.status(200).json({ data: { id } });
   }
 }
 
