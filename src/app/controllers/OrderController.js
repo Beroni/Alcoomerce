@@ -6,7 +6,7 @@ import User from '../models/User';
 class OrderController {
   async store(req, res) {
     const { products, amount } = req.body;
-
+    console.log(req.userId);
     const order = await Order.create({ buyer_id: req.userId, amount });
 
     order.setProduct(products);

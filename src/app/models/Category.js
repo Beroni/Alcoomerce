@@ -6,6 +6,7 @@ class Category extends Model {
       {
         name: Sequelize.STRING,
         description: Sequelize.STRING,
+        url: Sequelize.STRING,
       },
       { sequelize }
     );

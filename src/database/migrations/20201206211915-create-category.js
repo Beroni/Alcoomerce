@@ -17,6 +17,12 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
+      url: {
+        type: Sequelize.STRING,
+        allowNull: true,
+        default:
+          'https://www.montealtoagora.com.br/upload/noticia_20190118092443proibicao-bebida-posto.jpg',
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
